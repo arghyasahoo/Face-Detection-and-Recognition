@@ -14,7 +14,6 @@ class FaceRecognizer:
         self.curr_image = curr_img
         self.orig_image = orig_img
         self.build_model()
-        self.verify()
 
     def build_model(self, rec_model="VGG-Face"):
         model_name = rec_model

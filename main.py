@@ -5,8 +5,10 @@ from face_recognizer import FaceRecognizer
 
 
 def main():
-    detected = FaceDetector()
-    recognized = FaceRecognizer()
+    detected = FaceDetector("img/5.jpg")
+    recognized = FaceRecognizer("img/5.jpg", "img/7.jpg")
+
+    print(detected, recognized)
 
 
 if __name__ == "__main__":

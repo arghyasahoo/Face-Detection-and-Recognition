@@ -17,7 +17,7 @@ class FaceRecognizer:
 
     def build_model(self, rec_model="VGG-Face"):
         model_name = rec_model
-        model = DeepFace.build_model(model_name)
+        DeepFace.build_model(model_name)
 
     def verify(self):
         result = DeepFace.verify(self.orig_image, self.curr_image)

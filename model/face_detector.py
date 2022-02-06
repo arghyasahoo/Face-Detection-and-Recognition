@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 class FaceDetector:
     def __init__(self, image) -> None:
         self.face_cascade = cv.CascadeClassifier("haarcascade_frontalface_default.xml")
-        self.image = image
-        self.grayscaled = cv.cvtColor(cv.imread(self.image), cv.COLOR_BGR2GRAY)
+        self.image = cv.imread(image)
+        self.grayscaled = cv.cvtColor(self.image, cv.COLOR_BGR2GRAY)
 
     def detect(self):
         faces = self.face_cascade.detectMultiScale(

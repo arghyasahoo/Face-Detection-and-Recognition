@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    detected = FaceDetector("./img/5.jpg").detect()
-    recognized = FaceRecognizer("./img/5.jpg", "img/7.jpg").verify()
+    detected = FaceDetector("../img/5.jpg").detect()
+    recognized = FaceRecognizer("../img/5.jpg", "../img/7.jpg").verify()
 
     print("Recognition Status = " + str(recognized))
     print(plt.imshow(detected))

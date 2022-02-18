@@ -5,8 +5,6 @@ Used to detect if the student has left the window or not
 
 # Importing standard libraries
 from deepface import DeepFace
-import cv2 as cv
-import matplotlib.pyplot as plt
 
 
 class FaceRecognizer:

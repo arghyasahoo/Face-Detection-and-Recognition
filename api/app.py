@@ -70,12 +70,12 @@ def original():
 
 
 def recognize_face(curr_image):
-    orig_image_path = ORIGINAL_FOLDER + "/orig_image.jpg"
-    print(orig_image_path)
-    orig_image = open(orig_image_path, "rb").read()
-    recognized = FaceRecognizer(curr_image, orig_image)
-    orig_image.close()
-    print("Done")
+    orig_image = (
+        "/home/arghya/Github/Face-Detection-and-Recognition/api/upload/original"
+        + "/orig_image.jpg"
+    )
+    recognized = FaceRecognizer(curr_image, orig_image).verify()
+    print(recognized)
     return recognized
 
 
@@ -101,9 +101,17 @@ def detect_face():
         image.save(image_name)
 
         try:
-            result = FaceDetector(image_name).detect()
-            recognize_face(image_name)  # * if detected, recognize face
-            msg = {"success": "[+] Face detected and recognized"}
+            detected = FaceDetector(image_name).detect()
+            recognized = recognize_face(image_name)  # * if detected, recognize face
+
+            if len(list(detected)) > 0:
+                if recognized:
+                    msg = {"success": "[+] Face detected and recognized"}
+                else:
+                    msg = {"success": "[+] Face detected"}
+            else:
+                msg = {"error": "Face not detected"}
+
         except:
             msg = {"error": "Face not detected"}
 

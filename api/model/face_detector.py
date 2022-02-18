@@ -24,7 +24,6 @@ class FaceDetector:
         # print("\n==========Grayscaled Image==========\n")
         # print(self.grayscaled)
 
-        # ! path error occuring here
         faces = self.face_cascade.detectMultiScale(
             self.grayscaled, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30)
         )

@@ -15,7 +15,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "./upload"
 ORIGINAL_FOLDER = "./upload/original"
 RESULT_FOLDER = "./results"
-ALLOWED_FILE_FORMATS = {"jpg", "png"}
+ALLOWED_FILE_FORMATS = {"jpg", "png", "jpeg"}
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.config["ORIGINAL_FOLDER"] = ORIGINAL_FOLDER
 app.config["RESULT_FOLDER"] = RESULT_FOLDER
@@ -104,15 +104,33 @@ def detect_face():
             detected = FaceDetector(image_name).detect()
             recognized = recognize_face(image_name)  # * if detected, recognize face
 
-            if len(list(detected)) > 0:
-                if recognized:
-                    msg = {"success": "[+] Face detected and recognized"}
+            if len(list(detected[0])) > 0:
+                if detected[1] > 1:
+                    msg = {"error": "MFD"}
                 else:
-                    msg = {"success": "[+] Face detected"}
+                    if recognized:
+                        msg = {"success": "OK"}
+                    else:
+                        msg = {"error": "FNR"}
             else:
-                msg = {"error": "Face not detected"}
+                msg = {"error": "FND"}
 
         except:
-            msg = {"error": "Face not detected"}
+            msg = {"error": "FND"}
 
         return msg
+    else:
+        return {"error": "FNA"}
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080, debug=False)
+
+
+"""
+OK = Face Detected and Recognized
+FND = Face Not Detected
+FNR = face Not Recognized
+MFD = Multiple Face Detected
+FNA = File Not Allowed
+"""

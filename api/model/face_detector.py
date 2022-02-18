@@ -4,6 +4,7 @@ Used to detect if the student has left the window or not
 """
 
 # Importing standard libraries
+from functools import total_ordering
 import cv2 as cv
 
 
@@ -28,17 +29,19 @@ class FaceDetector:
             self.grayscaled, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30)
         )
 
+        total_faces = -1
         try:
-            print(
-                "Total faces:", len(list(faces))
-            )  # returns the face count in an image
+            total_faces = len(list(faces))
+            # print(
+            #     "Total faces:", total_faces
+            # )  # returns the face count in an image
         except:
+            total_faces = len(list(faces))
             print("Could not find out total number of faces")
-            pass
 
         # Draw rectangle around the faces
         for (x, y, w, h) in faces:
             result = cv.rectangle(
                 self.grayscaled, (x, y), (x + w, y + h), (255, 255, 255), 2
             )
-        return result
+        return (result, total_faces)

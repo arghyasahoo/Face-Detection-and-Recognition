@@ -1,0 +1,7 @@
+services:
+  smartassessment:
+    public: true
+    image: arghya1337/face_detection
+    build:  .
+    ports:
+      - "8080:8080"

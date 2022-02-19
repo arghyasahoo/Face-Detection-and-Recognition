@@ -35,7 +35,7 @@ class FaceDetector:
         try:
             total_faces = len(list(faces))
         except:
-            return (None, 0)
+            return ([], 0)
 
         # Draw rectangle around the faces
         for (x, y, w, h) in faces:

@@ -70,10 +70,7 @@ def original():
 
 
 def recognize_face(curr_image):
-    orig_image = (
-        "/home/arghya/Github/Face-Detection-and-Recognition/api/upload/original"
-        + "/orig_image.jpg"
-    )
+    orig_image = "/upload/original" + "/orig_image.jpg"
     recognized = FaceRecognizer(curr_image, orig_image).verify()
     print(recognized)
     return recognized
@@ -126,7 +123,7 @@ def detect_face():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=False)
+    app.run(host="0.0.0.0", port=8080, debug=True)
 
 
 """

@@ -105,7 +105,9 @@ def detect_face():
             recognized = recognize_face(image_name)  # * if detected, recognize face
 
             if len(list(detected[0])) > 0:
-                if detected[1] > 1:
+                if detected[1] == 1:
+                    msg = {"success": "FD"}
+                elif detected[1] > 1:
                     msg = {"error": "MFD"}
                 else:
                     if recognized:

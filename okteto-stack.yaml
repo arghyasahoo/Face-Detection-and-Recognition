@@ -1,5 +1,5 @@
 services:
-  smartassessment:
+  face-detect:
     public: true
     image: arghya1337/face_detection
     build:  .

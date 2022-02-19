@@ -8,21 +8,16 @@ import os
 
 
 def main():
-    # detected = FaceDetector(
-    #     os.path.abspath(
-    #         "/home/arghya/Github/Face-Detection-and-Recognition/api/upload/7.jpg"
-    #     )
-    # ).detect()
-    recognized = FaceRecognizer(
-        "/home/arghya/Github/Face-Detection-and-Recognition/api/upload/7.jpg",
-        "/home/arghya/Github/Face-Detection-and-Recognition/api/upload/5.jpg",
-    ).verify()
+    detected = FaceDetector(os.path.abspath("/home/arghya/Pictures/img/7.jpg")).detect()
+    # recognized = FaceRecognizer(
+    #     "/home/arghya/Pictures/img/7.jpg", "/home/arghya/Pictures/img/5.jpg"
+    # ).verify()
 
-    print(recognized)
+    # print(recognized)
 
     # print("Recognition Status = " + str(recognized))
-    # print(plt.imshow(detected))
-    # plt.show()
+    print(plt.imshow(detected[0]))
+    plt.show()
 
 
 if __name__ == "__main__":

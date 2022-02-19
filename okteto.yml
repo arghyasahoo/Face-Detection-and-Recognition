@@ -1,0 +1,10 @@
+name: face-detect
+command: bash
+sync:
+- .:/okteto
+forward:
+- 8080:8080
+reverse:
+- 9000:9000
+volumes:
+- /root/.cache/pip

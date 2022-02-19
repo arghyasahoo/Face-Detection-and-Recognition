@@ -10,7 +10,6 @@ import cv2 as cv
 
 class FaceDetector:
     def __init__(self, image) -> None:
-        # image = "/home/arghya/Github/Face-Detection-and-Recognition/api/upload/7.jpg"
         self.face_cascade = cv.CascadeClassifier(
             os.path.abspath(
                 "/model/haarcascade_frontalface_default.xml"

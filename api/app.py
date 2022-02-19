@@ -98,12 +98,13 @@ def detect_face():
         image.save(image_name)
 
         try:
+            print(image_name)
             detected = FaceDetector(image_name).detect()
             recognized = recognize_face(image_name)  # * if detected, recognize face
 
             if len(list(detected[0])) > 0:
                 if detected[1] == 0:
-                    return {"error": "FND"}
+                    return {"error": "FND0"}
                 elif detected[1] > 1:
                     msg = {"error": "MFD"}
                 else:
@@ -112,10 +113,10 @@ def detect_face():
                     else:
                         msg = {"error": "FNR"}
             else:
-                msg = {"error": "FND"}
+                msg = {"error": "FND1"}
 
         except:
-            msg = {"error": "FND"}
+            msg = {"error": "FND2"}
 
         return msg
     else:

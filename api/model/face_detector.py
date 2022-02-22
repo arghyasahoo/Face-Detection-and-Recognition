@@ -20,7 +20,7 @@ class FaceDetector:
 
     def detect(self):
         result = None
-
+        print(self.grayscaled)
         # print("\n==========Original Image==========\n")
         # print(self.image)
         # print("\n==========Grayscaled Image==========\n")

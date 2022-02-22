@@ -8,7 +8,8 @@ import os
 
 
 def main():
-    detected = FaceDetector(os.path.abspath("../upload/img/7.jpg")).detect()
+    detected = FaceDetector(os.path.abspath("../upload/7.jpg")).detect()
+    print(detected)
     # recognized = FaceRecognizer(
     #     "/home/arghya/Pictures/img/7.jpg", "/home/arghya/Pictures/img/5.jpg"
     # ).verify()

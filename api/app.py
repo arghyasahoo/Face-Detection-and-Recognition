@@ -69,6 +69,7 @@ def original():
         return msg
 
 
+@app.route("/recognize", methods=["POST"])
 def recognize_face(curr_image):
     orig_image = "/upload/original" + "/orig_image.jpg"
     recognized = FaceRecognizer(curr_image, orig_image).verify()
@@ -98,25 +99,26 @@ def detect_face():
         image.save(image_name)
 
         try:
-            print(image_name)
+            # print(image_name)
             detected = FaceDetector(image_name).detect()
-            recognized = recognize_face(image_name)  # * if detected, recognize face
+            # recognized = recognize_face(image_name)  # * if detected, recognize face
 
             if len(list(detected[0])) > 0:
                 if detected[1] == 0:
-                    return {"error": "FND0"}
+                    return {"error": "NFD"}
                 elif detected[1] > 1:
                     msg = {"error": "MFD"}
                 else:
-                    if recognized:
-                        msg = {"success": "OK"}
-                    else:
-                        msg = {"error": "FNR"}
+                    msg = {"success": "OK"}
+                    # if recognized:
+                    #     msg = {"success": "OK"}
+                    # else:
+                    #     msg = {"error": "FNR"}
             else:
-                msg = {"error": "FND1"}
+                msg = {"error": "FND"}
 
         except:
-            msg = {"error": "FND2"}
+            msg = {"error": "EXPT"}
 
         return msg
     else:
